@@ -1,0 +1,62 @@
+// Función principal que ordena el arreglo usando Merge Sort
+Funcion MergeSort(puntero arreglo, entero izquierda, entero derecha)
+    Si izquierda < derecha entonces
+        entero medio = (izquierda + derecha) / 2
+
+        // Ordenar la mitad izquierda
+        Llamar MergeSort(arreglo, izquierda, medio)
+
+        // Ordenar la mitad derecha
+        Llamar MergeSort(arreglo, medio + 1, derecha)
+
+        // Combinar las dos mitades ordenadas
+        Llamar Merge(arreglo, izquierda, medio, derecha)
+    FinSi
+FinFuncion
+
+// Función para combinar dos subarreglos ordenados
+Funcion Merge(puntero arreglo, entero izquierda, entero medio, entero derecha)
+    n1 = medio - izquierda + 1      // Tamaño del primer subarreglo
+    n2 = derecha - medio            // Tamaño del segundo subarreglo
+
+    Crear arreglo temporal L[n1]
+    Crear arreglo temporal R[n2]
+
+    // Copiar los elementos al arreglo temporal L[]
+    Para i desde 0 hasta n1 - 1 hacer
+        L[i] = arreglo[izquierda + i]
+    FinPara
+
+    // Copiar los elementos al arreglo temporal R[]
+    Para j desde 0 hasta n2 - 1 hacer
+        R[j] = arreglo[medio + 1 + j]
+    FinPara
+
+    // Mezclar los dos arreglos temporales en arreglo[izquierda..derecha]
+    i = 0, j = 0, k = izquierda
+    Mientras i < n1 Y j < n2 hacer
+        Si L[i] <= R[j] entonces
+            arreglo[k] = L[i]
+            i = i + 1
+        Sino
+            arreglo[k] = R[j]
+            j = j + 1
+        FinSi
+        k = k + 1
+    FinMientras
+
+    // Copiar los elementos restantes de L[], si hay
+    Mientras i < n1 hacer
+        arreglo[k] = L[i]
+        i = i + 1
+        k = k + 1
+    FinMientras
+
+    // Copiar los elementos restantes de R[], si hay
+    Mientras j < n2 hacer
+        arreglo[k] = R[j]
+        j = j + 1
+        k = k + 1
+    FinMientras
+FinFuncion
+
