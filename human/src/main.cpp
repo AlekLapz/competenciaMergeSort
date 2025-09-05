@@ -62,13 +62,13 @@ int main() {
 
     // Tomar tiempo de fin
     auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<nanoseconds>(stop - start);
+    auto duration = duration_cast<microseconds>(stop - start);
 
     // Mostrar arreglo ordenado  y tiempo de ejecución  
         cout << "\nArreglo ordenado:\n";
         printArray(arr, n);
 
-    cout << "\nTiempo de ejecución: " << duration.count() << " nanosegundos\n";
+    cout << "\nTiempo de ejecución: " << duration.count() << " microsegundos\n";
 
     // Liberar memoria
     delete[] arr;
